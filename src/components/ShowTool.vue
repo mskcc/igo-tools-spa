@@ -1,10 +1,24 @@
 <template>
   <div class='tool'>
-    <div class='tool-name'>{{ tool.name }}</div>
-    <a class='tool-link' :href='tool.link'>{{ tool.link }}</a>
-    <div class='tool-description'>Description{{ tool.description }}</div>
-    <button>Edit</button>
-    <button>Delete</button>
+    <table>
+      <tr>
+        <td>
+          <div class='tool-name'>{{ tool.name }}</div>
+        </td>
+        <td>
+          <a class='tool-link' :href='tool.link'>{{ tool.link }}</a>
+        </td>
+        <td>
+          <div class='tool-description'>Description{{ tool.description }}</div>
+        </td>
+        <td>
+          <button>Edit</button>
+        </td>
+        <td>
+          <button>Delete</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </template> 
 

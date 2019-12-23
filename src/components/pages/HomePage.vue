@@ -1,16 +1,26 @@
 <template>
-  <div id='tools' class='grid-container grid-container--fit' >
+  <div id='tools' class='grid-container grid-container--fit'>
     <!-- <h2>Tools</h2> -->
-    <show-tool v-for='tool in tools' :key='tool.id' :tool='tool'></show-tool>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Link</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+
+      <show-tool v-for='tool in tools' :key='tool.id' :tool='tool'></show-tool>
+    </table>
   </div>
 </template>
 
 <script>
-import ShowTool from './ShowTool.vue';
+import ShowTool from './../ShowTool.vue';
 // import { tools } from './../tools.js';
 
 export default {
-  name: 'ShowTools',
+  name: 'HomePage',
   components: { ShowTool },
   data: function() {
     return {
@@ -61,10 +71,15 @@ export default {
           description: ''
         }
       ]
-    }
+    };
   }
 };
 </script>
 
 <style scoped>
+table,
+th,
+td {
+  border: 1px solid black;
+}
 </style>

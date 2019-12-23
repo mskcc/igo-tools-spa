@@ -14,10 +14,10 @@ img {
     width: 10%;
     height: auto;
 }
-.tool {
+/* .tool {
         border-radius: 15px;
         border: 2px solid #40b4e5;
-}
+} */
 
 .tool-name {
     font-weight: bold;
@@ -27,19 +27,14 @@ img {
     font-size: 12px;
 }
 
-.grid-container {
+/* .grid-container {
     display: grid;
-    /* grid-template-columns: auto auto auto; */
-    
     justify-content: center;
     grid-gap: 10px;
-    /* overflow-wrap: break-word;
-    word-wrap: break-word; */
     word-break: break-word;
-  
-}
+} */
 
-.grid-container--fit {
+/* .grid-container--fit {
     grid-template-columns: repeat(auto-fit, minmax(400px, 3fr));
-}
+} */
    

@@ -2,23 +2,21 @@
   <div id='app'>
     <img alt='Vue logo' src='./assets/splash_logo_dark.png' />
     <p>A complete list of tools used internally by IGO</p>
-    <!-- <HelloWorld msg='Welcome to Your Vue.js App' /> -->
+
     <new-tool></new-tool>
-    <show-tools></show-tools>
+    <home-page></home-page>
     <!-- <button @click='$emit("addNewTool")'>Add new tool</button> -->
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
-import ShowTools from './components/ShowTools.vue';
+import HomePage from './components/pages/HomePage.vue';
 import NewTool from './components/NewTool.vue';
 
 export default {
   name: 'app',
   components: {
-    // HelloWorld
-    ShowTools,
+    HomePage,
     NewTool
   }
 };
