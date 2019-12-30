@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import HomePage from './components/pages/HomePage.vue'
-import CreateTool from './components/pages/CreateTool.vue'
+import CreateToolPage from './components/pages/CreateToolPage.vue'
 
 Vue.use(VueRouter);
 
@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 
 const routes = [
   { path: '/', component: HomePage, name: 'home' },
-  { path: '/create', component: CreateTool, name: 'create' }
+  { path: '/create', component: CreateToolPage, name: 'create' }
 ]
 
 const router = new VueRouter({
