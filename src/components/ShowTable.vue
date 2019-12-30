@@ -35,7 +35,6 @@ import { tools } from './../tools.js';
 
 export default {
   name: 'ShowTable',
-  // props: ['tool'],
   data: function() {
     return {
       tools: tools

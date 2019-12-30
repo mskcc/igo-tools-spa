@@ -3,22 +3,24 @@
     <h1>IGO Tools</h1>
     <img alt='IGO logo' src='./assets/splash_logo_dark.png' />
     <p>A complete list of tools used internally by IGO</p>
-
-    <new-tool></new-tool>
-    <home-page></home-page>
-    <!-- <button @click='$emit("addNewTool")'>Add new tool</button> -->
+    <nav>
+      <ul>
+        <li class='topnavli' v-for='link in links' :key='link'>
+          <router-link exact :to='{ name: link }'>{{ link }}</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HomePage from './components/pages/HomePage.vue';
-import NewTool from './components/NewTool.vue';
-
 export default {
   name: 'app',
-  components: {
-    HomePage,
-    NewTool
+  data: function() {
+    return {
+      links: ['home', 'create']
+    };
   }
 };
 </script>
