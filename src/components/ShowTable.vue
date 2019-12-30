@@ -1,18 +1,41 @@
 <template>
-  <div id='tools' class='grid-container grid-container--fit'>
-    <!-- <h2>Tools</h2> -->
-
-    <show-table></show-table>
+  <div class='tool'>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Link</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr v-for='tool in tools' :key='tool.id' :tool='tool'>
+        <td>
+          <div class='tool-name'>{{ tool.name }}</div>
+        </td>
+        <td>
+          <a class='tool-link' :href='tool.link'>{{ tool.link }}</a>
+        </td>
+        <td>
+          <div class='tool-description'>{{ tool.description }}</div>
+        </td>
+        <td>
+          <button>Edit</button>
+        </td>
+        <td>
+          <button>Delete</button>
+        </td>
+      </tr>
+    </table>
   </div>
-</template>
+</template> 
+
 
 <script>
-import ShowTable from './../ShowTable.vue';
 // import { tools } from './../tools.js';
 
 export default {
-  name: 'HomePage',
-  components: { ShowTable },
+  name: 'ShowTable',
+  // props: ['tool'],
   data: function() {
     return {
       tools: [
@@ -20,7 +43,7 @@ export default {
           id: 1,
           name: 'BAM QC review- Website',
           link: 'https://igo.mskcc.org/seq-qc/home',
-          description: ''
+          description: 'test'
         },
         {
           id: 2,
@@ -68,9 +91,4 @@ export default {
 </script>
 
 <style scoped>
-/* table,
-th,
-td {
-  border: 1px solid black;
-} */
 </style>
