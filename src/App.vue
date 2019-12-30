@@ -1,6 +1,7 @@
 <template>
   <div id='app'>
-    <img alt='Vue logo' src='./assets/splash_logo_dark.png' />
+    <h1>IGO Tools</h1>
+    <img alt='IGO logo' src='./assets/splash_logo_dark.png' />
     <p>A complete list of tools used internally by IGO</p>
 
     <new-tool></new-tool>

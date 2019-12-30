@@ -1,3 +1,12 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: left;
+  }
+
 /* #tools {
     .tool {
         border-radius: 15px;
