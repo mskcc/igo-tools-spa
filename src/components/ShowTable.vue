@@ -31,14 +31,22 @@
 
 
 <script>
-import { tools } from './../tools.js';
+// import { tools } from './../tools.js';
+const axios = require('axios');
 
 export default {
   name: 'ShowTable',
   data: function() {
     return {
-      tools: tools
+      tools: []
     };
+  },
+  mounted() {
+    axios.get('http://localhost:5000/getTools').then(response => {
+      this.tools = response.data;
+      console.log(response);
+      console.log(response.data);
+    });
   }
 };
 </script>
