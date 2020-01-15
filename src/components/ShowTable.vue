@@ -38,15 +38,20 @@ export default {
   name: 'ShowTable',
   data: function() {
     return {
-      tools: []
+      // tools: []
     };
   },
-  mounted() {
-    axios.get('http://localhost:5000/getTools').then(response => {
-      this.tools = response.data;
-      console.log(response);
-      console.log(response.data);
-    });
+  // mounted() {
+  //   axios.get('http://localhost:5000/getTools').then(response => {
+  //     this.tools = response.data;
+  //     console.log(response);
+  //     console.log(response.data);
+  //   });
+  // }
+  computed: {
+    tools: function() {
+      return this.$store.state.tools;
+    }
   }
 };
 </script>

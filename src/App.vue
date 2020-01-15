@@ -15,12 +15,17 @@
 </template>
 
 <script>
+// import * as app from './app.js';
+
 export default {
   name: 'app',
   data: function() {
     return {
       links: ['home', 'create']
     };
+  },
+  mounted() {
+    this.$store.dispatch('setTools');
   }
 };
 </script>
