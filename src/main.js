@@ -7,6 +7,11 @@ import store from './store'
 
 Vue.use(VueRouter);
 
+// it will ignore no-unused-vars
+/* eslint-disable no-unused-vars */
+const _ = require('lodash')
+// then will re-enable
+
 Vue.config.productionTip = false
 
 const routes = [

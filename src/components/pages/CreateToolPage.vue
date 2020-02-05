@@ -1,19 +1,57 @@
 <template>
-  <form>
+  <form @submit.prevent='handleSubmit'>
     Name:
-    <input type='text' name='name' />
+    <input type='text' v-model='tool.name' />
     <br />Link:
-    <input type='text' name='link' />
+    <input type='text' v-model='tool.link' />
     <br />Description:
-    <input type='text' name='description' />
+    <input type='text' v-model='tool.description' />
     <br />
     <input type='submit' value='Submit' />
   </form>
 </template>
 
 <script>
+import * as app from './../../app.js';
+
+let tool = {};
+// If in dev mode, we pre-fill the tool to make demo/testing easier
+if (process.env.NODE_ENV == 'development') {
+  tool = {
+    id: 3,
+    name: 'annas-link',
+    link: 'www.annaslink.com',
+    description: "Anna's link"
+  };
+} else {
+  tool = {
+    id: '',
+    name: '',
+    link: '',
+    description: ''
+  };
+}
+
 export default {
-  name: 'CreateToolPage'
+  name: 'CreateToolPage',
+  data: function() {
+    return {
+      tool: tool
+    };
+  },
+  methods: {
+    handleSubmit: function() {
+      app.axios
+        .post('http://localhost:5000/addTool', this.tool)
+        // .post('./../../igo-tools-backend/app/toollist.py')
+        .then(response => {
+          // let id = Date.now();
+          // console.log(id);
+          // Update Vuex store
+          this.$store.commit('addTool', { tool });
+        });
+    }
+  }
 };
 </script>
 
