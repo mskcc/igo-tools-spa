@@ -18,14 +18,14 @@ let tool = {};
 // If in dev mode, we pre-fill the tool to make demo/testing easier
 if (process.env.NODE_ENV == 'development') {
   tool = {
-    id: 3,
-    name: 'annas-link',
-    link: 'www.annaslink.com',
-    description: "Anna's link"
+    // id: 3,
+    name: 'test',
+    link: 'test.com',
+    description: 'test'
   };
 } else {
   tool = {
-    id: '',
+    // id: '',
     name: '',
     link: '',
     description: ''
@@ -48,7 +48,13 @@ export default {
           // let id = Date.now();
           // console.log(id);
           // Update Vuex store
-          this.$store.commit('addTool', { tool });
+          this.$store.dispatch('setTools').then(() =>
+            this.$router.push({
+              name: 'home'
+            })
+          );
+
+          // push to the homepage with newly added tool
         });
     }
   }

@@ -15,9 +15,11 @@ export default new Vuex.Store({
             state.tools = payload
         },
         // install lodash before using this
-        addTool(state, payload) {
-            _.merge(state.tools + payload)
-        }
+        // addTool(state, payload) {
+        //     _.merge(state.tools, payload.tool)
+        //     // console.log(payload)
+        //     console.log(state.tools)
+        // }
     },
     actions: {
         setTools(context) {
