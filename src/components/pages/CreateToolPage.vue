@@ -43,18 +43,13 @@ export default {
     handleSubmit: function() {
       app.axios
         .post('http://localhost:5000/addTool', this.tool)
-        // .post('./../../igo-tools-backend/app/toollist.py')
         .then(response => {
-          // let id = Date.now();
-          // console.log(id);
-          // Update Vuex store
+          // Set tools in Vuex store and route to home
           this.$store.dispatch('setTools').then(() =>
             this.$router.push({
               name: 'home'
             })
           );
-
-          // push to the homepage with newly added tool
         });
     }
   }

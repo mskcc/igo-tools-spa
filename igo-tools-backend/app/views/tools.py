@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, make_response, jsonify, request, json
 # from app import toollist
 from pymongo import MongoClient
 # include pprint for readabillity of the
-# from pprint import pprint
+from pprint import pprint
 # Use dumps from bson.json_util:
 from bson.json_util import dumps
 
@@ -17,12 +17,8 @@ db = client.toolsDB
 
 @tools.route("/getTools", methods=["GET", "POST"])
 def get_tools():
-    # read toollist
-    # path = '/Users/patrunoa/workspace/igo-tools-spa/igo-tools-backend/app/toollist.py'
-    # with open(path, 'r') as input:
-    # tools = json.load(input)
-    # return make_response(jsonify(tools), 200)
 
+    # get tools from MongoDB
     tools = dumps(db.tools.find())
     # pprint(tools)
     return make_response(tools, 200)
@@ -31,37 +27,35 @@ def get_tools():
 @tools.route("/addTool", methods=["POST"])
 def add_tool():
 
-    # get the current tools
-    # path = '/Users/patrunoa/workspace/igo-tools-spa/igo-tools-backend/app/toollist.py'
-    # with open(path, 'r') as input:
-    #     tools = json.load(input)
-    # print(tools)
-
     # get the data from the front end
     new_tool = request.json
     print(new_tool)
 
+    # add new tool as a new toolsDB collection
     tools = db.tools.insert(new_tool)
+
+    # get updated list of tools
     current_tools = dumps(tools)
-    # tools = dumps(db.tools.find())
 
-    # append the data from the form to the current tools
-    # tools.append(data)
-    # print(tools)
+    # return the toollist
+    return make_response(current_tools, 200)
 
-    # write the tools to the file
 
-    # with open(path, 'w') as output:
-    #     output.write(json.dumps(tools))
-    # tools_file.close()
+@tools.route("/deleteTool", methods=["POST"])
+def delete_tool():
 
-    # fo = open(path, 'r')
-    # content = fo.readlines()
-    # print(content)
+    # get the tool for which the delete button is being clicked
+    # pprint(request.json)
+    old_tool_name = request.json
+    text = old_tool_name.get("name", None)
+    print(text)
 
-    # with open(path, 'a') as output:
-    #     output.write(json.dumps(data))
-    # tools_file.close()
+    # delete that collection from toolsDB
+    tools = db.tools.delete_one({"name": text})
+    # tools = db.tools.remove({"name": "text"})
+
+    # get updated list of tools
+    current_tools = dumps(db.tools.find())
 
     # return the toollist
     return make_response(current_tools, 200)

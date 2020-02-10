@@ -8,9 +8,9 @@
         <th>Edit</th>
         <th>Delete</th>
       </tr>
-      <tr v-for='tool in tools' :key='tool.id' :tool='tool'>
+      <tr v-for='tool in tools' :key='tool._id.$oid' :tool='tool'>
         <td>
-          <div class='tool-name'>{{ tool.name }}</div>
+          <div class='tool-name'>{{ tool.name}}</div>
         </td>
         <td>
           <a class='tool-link' :href='tool.link'>{{ tool.link }}</a>
@@ -19,10 +19,10 @@
           <div class='tool-description'>{{ tool.description }}</div>
         </td>
         <td>
-          <button>Edit</button>
+          <button v-on:click='handleEdit(tool._id.$oid)'>Edit</button>
         </td>
         <td>
-          <button>Delete</button>
+          <button v-on:click='handleDelete(tool.name)'>Delete</button>
         </td>
       </tr>
     </table>
@@ -31,23 +31,31 @@
 
 
 <script>
-// import { tools } from './../tools.js';
-const axios = require('axios');
+import * as app from './../app.js';
+// const axios = require('axios');
 
 export default {
   name: 'ShowTable',
   data: function() {
-    return {
-      // tools: []
-    };
+    return {};
   },
-  // mounted() {
-  //   axios.get('http://localhost:5000/getTools').then(response => {
-  //     this.tools = response.data;
-  //     console.log(response);
-  //     console.log(response.data);
-  //   });
-  // }
+  methods: {
+    handleDelete: function(name) {
+      console.log(name);
+      // delete by id
+      app.axios
+        .post('http://localhost:5000/deleteTool', { name })
+        .then(response => {
+          // Set tools in Vuex store and route to home
+          this.$store.dispatch('setTools').then(() =>
+            this.$router.push({
+              name: 'home'
+            })
+          );
+        });
+    },
+    handleEdit: function() {}
+  },
   computed: {
     tools: function() {
       return this.$store.state.tools;

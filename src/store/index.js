@@ -26,7 +26,7 @@ export default new Vuex.Store({
             app.axios.get('http://localhost:5000/getTools').then(response => {
                 context.commit('setTools', response.data);
                 // console.log(response);
-                console.log(response.data);
+                // console.log(response.data);
             })
         }
     }
