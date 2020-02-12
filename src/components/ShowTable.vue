@@ -19,10 +19,10 @@
           <div class='tool-description'>{{ tool.description }}</div>
         </td>
         <td>
-          <button v-on:click='handleEdit(tool._id.$oid)'>Edit</button>
+          <button v-on:click='handleEdit(tool)'>Edit</button>
         </td>
         <td>
-          <button v-on:click='handleDelete(tool.name)'>Delete</button>
+          <button v-on:click='handleDelete(tool._id.$oid)'>Delete</button>
         </td>
       </tr>
     </table>
@@ -37,24 +37,31 @@ import * as app from './../app.js';
 export default {
   name: 'ShowTable',
   data: function() {
-    return {};
+    return {
+      // edit: false
+    };
   },
   methods: {
-    handleDelete: function(name) {
-      console.log(name);
+    handleDelete: function(id) {
+      console.log(id);
       // delete by id
       app.axios
-        .post('http://localhost:5000/deleteTool', { name })
+        .post('http://localhost:5000/deleteTool', { id })
         .then(response => {
           // Set tools in Vuex store and route to home
-          this.$store.dispatch('setTools').then(() =>
-            this.$router.push({
-              name: 'home'
-            })
-          );
+          this.$store.dispatch('setTools');
         });
     },
-    handleEdit: function() {}
+    handleEdit: function(tool) {
+      // console.log(tool);
+      // console.log(this.$store.state.tools);
+
+      // store editTool
+      // route to create page to display form
+      this.$store.commit('setEditTool', tool);
+      this.$store.commit('setToEdit', true);
+      this.$router.push({ name: 'create' });
+    }
   },
   computed: {
     tools: function() {

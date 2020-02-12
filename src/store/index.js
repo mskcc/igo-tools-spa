@@ -9,6 +9,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         tools: [],
+        toEdit: false,
+        editTool: { name: '', link: '', description: '' }
     },
     mutations: {
         setTools(state, payload) {
@@ -20,6 +22,12 @@ export default new Vuex.Store({
         //     // console.log(payload)
         //     console.log(state.tools)
         // }
+        setToEdit(state, payload) {
+            state.toEdit = payload
+        },
+        setEditTool(state, payload) {
+            state.editTool = payload
+        }
     },
     actions: {
         setTools(context) {
