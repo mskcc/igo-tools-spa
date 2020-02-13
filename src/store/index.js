@@ -16,12 +16,6 @@ export default new Vuex.Store({
         setTools(state, payload) {
             state.tools = payload
         },
-        // install lodash before using this
-        // addTool(state, payload) {
-        //     _.merge(state.tools, payload.tool)
-        //     // console.log(payload)
-        //     console.log(state.tools)
-        // }
         setToEdit(state, payload) {
             state.toEdit = payload
         },

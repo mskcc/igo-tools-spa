@@ -32,14 +32,11 @@
 
 <script>
 import * as app from './../app.js';
-// const axios = require('axios');
 
 export default {
   name: 'ShowTable',
   data: function() {
-    return {
-      // edit: false
-    };
+    return {};
   },
   methods: {
     handleDelete: function(id) {
@@ -48,7 +45,7 @@ export default {
       app.axios
         .post('http://localhost:5000/deleteTool', { id })
         .then(response => {
-          // Set tools in Vuex store and route to home
+          // sets tools in Vuex store and routes to home
           this.$store.dispatch('setTools');
         });
     },
@@ -56,8 +53,7 @@ export default {
       // console.log(tool);
       // console.log(this.$store.state.tools);
 
-      // store editTool
-      // route to create page to display form
+      // stores editTool and routes to create page to display form
       this.$store.commit('setEditTool', tool);
       this.$store.commit('setToEdit', true);
       this.$router.push({ name: 'create' });
