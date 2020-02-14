@@ -1,20 +1,25 @@
+from app import app
 from flask import Flask, Blueprint, make_response, jsonify, request, json
+
 # from app import toollist
 from pymongo import MongoClient
+
 # include pprint for readabillity of the
 from pprint import pprint
+
 # Use dumps from bson.json_util:
 from bson.json_util import dumps
+
 # to delete tools by ObjectId
 from bson.objectid import ObjectId
 
 
 tools = Blueprint("tools", __name__)
-client = MongoClient("mongodb://bItAndAL:stONTICe@localhost:27017/toolsDB")
+client = MongoClient(app.config["MONGO_URL"])
 # MONGO_DATABASE_URI = app.config["MONGO_DATABASE_URI"]
 # client = MongoClient(MONGO_DATABASE_URI)
 
-db = client.toolsDB
+db = client.tools
 
 
 @tools.route("/getTools", methods=["GET", "POST"])
@@ -84,8 +89,7 @@ def edit_tool():
 
     # edit that collection from toolsDB by its id
     # updated_tools = db.tools.replaceOne({"_id": ObjectId(id)}, edit_tool)
-    db.tools.update_one(
-        {"_id": ObjectId(id)}, {"$set": edit_tool})
+    db.tools.update_one({"_id": ObjectId(id)}, {"$set": edit_tool})
 
     updated_tools = dumps(db.tools.find())
     # replace the values
@@ -98,6 +102,7 @@ def edit_tool():
 
     # return the toollist
     return make_response(updated_tools, 200)
+
 
 # @tools.route("/editTool", methods=["POST"])
 # def edit_tool():

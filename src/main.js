@@ -1,31 +1,45 @@
-import Vue from 'vue'
-import App from './App.vue'
-import VueRouter from 'vue-router'
-import HomePage from './components/pages/HomePage.vue'
-import CreateToolPage from './components/pages/CreateToolPage.vue'
-import store from './store'
+import Vue from "vue";
+import App from "./App.vue";
+import VueRouter from "vue-router";
+import HomePage from "./components/pages/HomePage.vue";
+import CreateToolPage from "./components/pages/CreateToolPage.vue";
+import store from "./store";
+
+import "vue-material/dist/vue-material.min.css";
+import "vue-material/dist/theme/default.css";
+import {
+    MdButton,
+    MdContent,
+    MdTabs,
+    
+} from "vue-material/dist/components";
+
+Vue.use(MdButton);
+Vue.use(MdContent);
+Vue.use(MdTabs);
+// Vue.use(MdApp);
 
 Vue.use(VueRouter);
 
 // it will ignore no-unused-vars
 /* eslint-disable no-unused-vars */
-const _ = require('lodash')
+const _ = require("lodash");
 // then will re-enable
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 const routes = [
-  { path: '/', component: HomePage, name: 'home' },
-  { path: '/create', component: CreateToolPage, name: 'create' }
-]
+    { path: "/", component: HomePage, name: "home" },
+    { path: "/create", component: CreateToolPage, name: "create" }
+];
 
 const router = new VueRouter({
-  routes: routes,
-  mode: 'history'
-})
+    routes: routes,
+    mode: "history"
+});
 
 new Vue({
-  store: store,
-  router: router,
-  render: h => h(App),
-}).$mount('#app')
+    store: store,
+    router: router,
+    render: h => h(App)
+}).$mount("#app");
