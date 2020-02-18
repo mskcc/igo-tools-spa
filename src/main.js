@@ -18,7 +18,8 @@ import {
     MdTabs,
     MdTable,
     MdIcon,
-    MdTooltip
+    MdTooltip,
+    MdDialog
 } from "vue-material/dist/components";
 
 Vue.use(MdButton);
@@ -27,6 +28,9 @@ Vue.use(MdTabs);
 Vue.use(MdTable);
 Vue.use(MdIcon);
 Vue.use(MdTooltip);
+Vue.use(MdDialog);
+
+
 // Vue.use(MdApp);
 
 Vue.use(VueRouter);
@@ -39,7 +43,7 @@ const _ = require("lodash");
 Vue.config.productionTip = false;
 
 const routes = [
-    { path: "/", component: HomePage, name: "home" },
+    { path: "/", component: HomePage, name: "home" }
     // { path: "/create", component: CreateToolPage, name: "create" }
 ];
 

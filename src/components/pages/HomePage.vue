@@ -19,4 +19,9 @@ export default {
 table {
     border: 1px solid black;
 }
+#tools {
+    width: 90vw;
+    margin: 0 auto;
+    text-align: right;
+}
 </style>

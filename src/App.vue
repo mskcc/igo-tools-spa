@@ -4,13 +4,13 @@
             <img class="logo" alt="IGO logo" src="./assets/IGOlogo512.png" />
             <span>IGO Tools</span>
         </div>
-        <nav>
+       <!--  <nav>
             <ul>
                 <li class="topnavli" v-for="link in links" :key="link">
                     <router-link exact :to="{ name: link }">{{ link }}</router-link>
                 </li>
             </ul>
-        </nav>
+        </nav> -->
         <router-view></router-view>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     name: "app",
     data: function() {
         return {
-            links: ["home"]
+           // links: ["home"]
         };
     },
     mounted() {
