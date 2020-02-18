@@ -15,11 +15,11 @@ from bson.objectid import ObjectId
 
 
 tools = Blueprint("tools", __name__)
-client = MongoClient(app.config["MONGO_URL"])
-# MONGO_DATABASE_URI = app.config["MONGO_DATABASE_URI"]
-# client = MongoClient(MONGO_DATABASE_URI)
+# client = MongoClient(app.config["MONGO_URL"])
+MONGO_DATABASE_URI = app.config["MONGO_DATABASE_URI"]
+client = MongoClient(MONGO_DATABASE_URI)
 
-db = client.tools
+db = client.toolsDB
 
 
 @tools.route("/getTools", methods=["GET", "POST"])
