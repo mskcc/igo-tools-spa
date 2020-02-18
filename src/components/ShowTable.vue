@@ -1,5 +1,5 @@
 <template>
-  <md-table class="table">
+  <md-table class='table'>
     <md-table-row>
       <md-table-head>Name</md-table-head>
       <md-table-head>Link</md-table-head>
@@ -8,44 +8,43 @@
       <md-table-head>Edit</md-table-head>
       <md-table-head>Delete</md-table-head>
     </md-table-row>
-    <md-table-row v-for="tool in tools" :key="tool._id.$oid" :tool="tool">
+    <md-table-row v-for='tool in tools' :key='tool._id.$oid' :tool='tool'>
       <md-table-cell>
-        <div class="tool-name">{{ tool.name }}</div>
+        <div class='tool-name'>{{ tool.name }}</div>
       </md-table-cell>
       <md-table-cell>
-        <a class="tool-link" :href="tool.link">{{ tool.link }}</a>
+        <a class='tool-link' :href='tool.link'>{{ tool.link }}</a>
       </md-table-cell>
       <md-table-cell>
-        <div class="tool-location">{{ tool.location }}</div>
+        <div class='tool-location'>{{ tool.location }}</div>
       </md-table-cell>
       <md-table-cell>
         <!-- if tool.documentation.includes('github') {display with github icon}-->
-        <div class="tool-documentation">{{ tool.documentation }}</div>
+        <div class='tool-documentation'>{{ tool.documentation }}</div>
       </md-table-cell>
       <md-table-cell>
-        <button v-on:click="handleEdit(tool)">
+        <button v-on:click='handleEdit(tool)'>
           <md-icon>edit</md-icon>
         </button>
       </md-table-cell>
       <md-table-cell>
-        <button v-on:click="handleDelete(tool._id.$oid)">
-          <md-icon>delete</md-icon>
+        <button v-on:click='handleDelete(tool._id.$oid)'>
+          <!-- <md-icon>delete</md-icon> -->
+          <i class='fab fa-github-square fa-3x'></i>
         </button>
       </md-table-cell>
-      <md-tooltip md-delay="300">{{ tool.tooltip }}</md-tooltip>
+      <md-tooltip md-delay='300'>{{ tool.tooltip }}</md-tooltip>
     </md-table-row>
     <md-table-row>
-      <md-table-cell colspan="6"
-        >A complete list of tools used internally by IGO.</md-table-cell
-      >
+      <md-table-cell colspan='6'>A complete list of tools used internally by IGO.</md-table-cell>
     </md-table-row>
   </md-table>
 </template>
 <script>
-import * as app from "./../app.js";
+import * as app from './../app.js';
 
 export default {
-  name: "ShowTable",
+  name: 'ShowTable',
   data: function() {
     return {};
   },
@@ -57,26 +56,26 @@ export default {
 
       this.$swal
         .fire({
-          text: "Are you sure you want to delete " + toolToDelete.name + "?",
+          text: 'Are you sure you want to delete ' + toolToDelete.name + '?',
           // html: response.data,
           // footer: 'To avoid mistakes, invalid cells are cleared immediately.',
-          type: "info",
+          type: 'info',
           animation: false,
           showCancelButton: true,
-          confirmButtonText: "Okay!",
-          confirmButtonColor: "#df4602",
-          cancelButtonColor: "#007cba"
+          confirmButtonText: 'Okay!',
+          confirmButtonColor: '#df4602',
+          cancelButtonColor: '#007cba'
           // customClass: { content: 'alert' },
         })
         .then(result => {
           if (result.value) {
             // delete by id
             app.axios
-              .post("http://localhost:5000/deleteTool", { id })
+              .post('http://localhost:5000/deleteTool', { id })
               .then(response => {
                 if (response) {
                   // sets tools in Vuex store and routes to home
-                  this.$store.dispatch("setTools");
+                  this.$store.dispatch('setTools');
                 }
               })
               .catch(error => {
@@ -95,10 +94,11 @@ export default {
 
       // stores editTool and routes to create page to display form
 
-      this.$store.commit("setEditTool", tool);
-      this.$store.commit("setToEdit", true);
-      this.$store.commit("showDialog", true);
+      this.$store.commit('setEditTool', tool);
+      this.$store.commit('setToEdit', true);
+      this.$store.commit('showDialog', true);
       // this.$router.push({ name: "create" });
+      // if cancelling, set showDialog to false
     }
   },
   computed: {
