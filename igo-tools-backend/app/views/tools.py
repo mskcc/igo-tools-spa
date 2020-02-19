@@ -27,7 +27,7 @@ def get_tools():
 
     # get tools from MongoDB
     tools = dumps(db.tools.find())
-    print(tools)
+    # print(tools)
     return make_response(tools, 200)
 
 
@@ -56,7 +56,7 @@ def delete_tool():
     old_tool = request.json
     # get the id of the tool
     id = old_tool.get("id", None)
-    # print(id)
+    print(id)
 
     # delete that collection from toolsDB by its id
     updated_tools = db.tools.delete_one({"_id": ObjectId(id)})
@@ -72,15 +72,19 @@ def delete_tool():
 def edit_tool():
 
     # get the tool for which the edit button is being clicked
-    pprint(request.json)
+    # print(request.data)
+    print(request.json)
     edit_tool = request.json
-
+    print(type(edit_tool))
     # get the id of the tool
-    id = edit_tool.get("id", None)
+    id = edit_tool.get("_id", None)
+    oid = id["$oid"]
+    print(oid)
+
     # name = edit_tool["name"]
     # link = edit_tool["link"]
     # description = edit_tool["description"]
-    # edit_tool.pop("_id")
+    edit_tool.pop("_id")
     # pprint(json.dumps(edit_tool))
 
     # find the tool
@@ -89,9 +93,10 @@ def edit_tool():
 
     # edit that collection from toolsDB by its id
     # updated_tools = db.tools.replaceOne({"_id": ObjectId(id)}, edit_tool)
-    db.tools.update_one({"_id": ObjectId(id)}, {"$set": edit_tool})
+    updated_tools = db.tools.update_one(
+        {"_id": ObjectId(oid)}, {"$set": edit_tool})
 
-    updated_tools = dumps(db.tools.find())
+    current_tools = dumps(db.tools.find())
     # replace the values
     # updated_tool.name = old_tool.get("name", None)
     # updated_tool.link = old_tool.get("link", None)
@@ -101,7 +106,7 @@ def edit_tool():
     # current_tools = dumps(db.updated_tools.find())
 
     # return the toollist
-    return make_response(updated_tools, 200)
+    return make_response(current_tools, 200)
 
 
 # @tools.route("/editTool", methods=["POST"])

@@ -11,7 +11,7 @@ export default new Vuex.Store({
         tools: [],
         toEdit: false,
         showDialog: false,
-        editTool: { name: "", link: "", description: "" }
+        editTool: { name: "", link: "", tooltip: "", server: "", documentation: "" }
     },
     mutations: {
         setTools(state, payload) {

@@ -3,7 +3,7 @@
     <md-table-row>
       <md-table-head>Name</md-table-head>
       <md-table-head>Link</md-table-head>
-      <md-table-head>Location</md-table-head>
+      <md-table-head>Server</md-table-head>
       <md-table-head>Documentation</md-table-head>
       <md-table-head>Edit</md-table-head>
       <md-table-head>Delete</md-table-head>
@@ -16,11 +16,12 @@
         <a class='tool-link' :href='tool.link'>{{ tool.link }}</a>
       </md-table-cell>
       <md-table-cell>
-        <div class='tool-location'>{{ tool.location }}</div>
+        <div class='tool-server'>{{ tool.server }}</div>
       </md-table-cell>
       <md-table-cell>
-        <!-- if tool.documentation.includes('github') {display with github icon}-->
+        <!-- if tool.documentation.includes('github') {display with github icon} -->
         <div class='tool-documentation'>{{ tool.documentation }}</div>
+        <i class='fab fa-github-square fa-3x'></i>
       </md-table-cell>
       <md-table-cell>
         <button v-on:click='handleEdit(tool)'>
@@ -29,8 +30,8 @@
       </md-table-cell>
       <md-table-cell>
         <button v-on:click='handleDelete(tool._id.$oid)'>
-          <!-- <md-icon>delete</md-icon> -->
-          <i class='fab fa-github-square fa-3x'></i>
+          <md-icon>delete</md-icon>
+          <!-- <i class='fab fa-github-square fa-3x'></i> -->
         </button>
       </md-table-cell>
       <md-tooltip md-delay='300'>{{ tool.tooltip }}</md-tooltip>

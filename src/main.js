@@ -19,7 +19,10 @@ import {
     MdTable,
     MdIcon,
     MdTooltip,
-    MdDialog
+    MdDialog,
+    MdCheckbox,
+    MdField,
+    // MdInput
 } from "vue-material/dist/components";
 
 Vue.use(MdButton);
@@ -29,6 +32,9 @@ Vue.use(MdTable);
 Vue.use(MdIcon);
 Vue.use(MdTooltip);
 Vue.use(MdDialog);
+Vue.use(MdCheckbox);
+Vue.use(MdField);
+// Vue.use(MdInput);
 
 
 // Vue.use(MdApp);
