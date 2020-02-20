@@ -1,4 +1,4 @@
-<!-- <template> -->
+<template>
 <div>
     <div class='full-width'>
         <md-button class='md-fab igo-btn' @click='triggerDialog(true)'>
