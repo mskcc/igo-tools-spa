@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class='full-width'>
-      <md-button class='md-primary md-raised igo-btn' @click='triggerDialog(true)'>Add Tool</md-button>
+      <md-button class='md-fab igo-btn' @click='triggerDialog(true)'><md-icon>add</md-icon></md-button>
     </div>
     <md-dialog :md-active.sync='showDialog' @md-closed='resetToEdit(false)'>
       <md-dialog-title>New Tool</md-dialog-title>
@@ -150,8 +150,9 @@ export default {
 .full-width {
   width: 100%;
 }
-.md-button.md-primary.md-raised.md-theme-default.igo-btn {
+
+.md-button.md-theme-default.md-fab:not([disabled]){
   background-color: #007cba;
-  margin-right: 0;
 }
+
 </style>
