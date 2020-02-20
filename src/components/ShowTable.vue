@@ -2,31 +2,26 @@
     <md-table class="table">
         <md-table-row>
             <md-table-head>Name</md-table-head>
-            <md-table-head>Link</md-table-head>
             <md-table-head>Server</md-table-head>
-            <md-table-head>Documentation</md-table-head>
+            <md-table-head class="doc-col">Documentation</md-table-head>
+            <md-table-head >Description</md-table-head>
             <md-table-head></md-table-head>
         </md-table-row>
         <md-table-row v-for="tool in tools" :key="tool._id.$oid" :tool="tool">
             <md-table-cell>
-                <div class="tool-name">{{ tool.name }}</div>
+                <a class="tool-name" :href="tool.link">{{ tool.name }}</a>
                 <md-tooltip md-delay="300">{{ tool.tooltip }}</md-tooltip>
-            </md-table-cell>
-            <md-table-cell>
-                <a class="tool-link" :href="tool.link">{{ tool.link }}</a>
             </md-table-cell>
             <md-table-cell>
                 <div class="tool-server">{{ tool.server }}</div>
             </md-table-cell>
-            <md-table-cell>
+            <md-table-cell class="doc-col">
                 <!-- if tool.documentation.includes('github') {display with github icon} -->
                 <div v-if="tool.documentation.includes(',')" class="tool-documentation">
                     <span v-for="(item, index) in tool.documentation.split(',')" :key="index">
                         <a :href="item">
                             <i v-if="item.includes('github')" class="fa-icon fab fa-github fa-3x"></i>
                             <i v-if="item.includes('plvpipetrack1')" class="fa-icon fas fa-book fa-3x"></i>
-                            
-
                             <md-tooltip md-delay="300">{{ item }}</md-tooltip>
                         </a>
                     </span>
@@ -37,7 +32,11 @@
                     </a>
                 </div>
             </md-table-cell>
-            <md-table-cell>
+            
+              <md-table-cell >
+                <div class="tool-tooltip">{{ tool.tooltip }}</div>
+            </md-table-cell>
+            <md-table-cell class="edit-col">
                 <md-button class="md-icon-button md-raised" v-on:click="handleEdit(tool)">
                     <md-icon>edit</md-icon>
                 </md-button>
@@ -121,8 +120,17 @@ export default {
 };
 </script>
 <style scoped>
+th{
+  width: 10px;
+  font-size: 1.2em;
+}
 .table {
     text-align: left;
+}
+.doc-col {
+    text-align: center;
+}.edit-col {
+    text-align: right;
 }
 
 i.fa-icon {
