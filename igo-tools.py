@@ -1,7 +1,7 @@
 import os
 from flask import Flask, send_from_directory
 
-app = Flask(__name__, static_folder='./build')
+app = Flask(__name__, static_folder='./dist')
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
