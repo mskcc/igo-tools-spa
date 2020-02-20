@@ -3,5 +3,5 @@ module.exports = {
         config.module.rules.delete("eslint");
     },
 
-    publicPath: "/igo-tools"
+    // publicPath: "/igo-tools/"
 };

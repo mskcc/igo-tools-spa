@@ -28,7 +28,7 @@ export default new Vuex.Store({
     },
     actions: {
         setTools(context) {
-            app.axios.get(process.env.API_ROOT + "/getTools").then(response => {
+            app.axios.get(process.env.VUE_APP_API_ROOT + "/getTools").then(response => {
                 context.commit("setTools", response.data);
                 // console.log(response);
                 // console.log(response.data);

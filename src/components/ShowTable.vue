@@ -100,7 +100,7 @@ export default {
           if (result.value) {
             // delete by id
             app.axios
-              .post(process.env.API_ROOT + "/deleteTool", { id })
+              .post(process.env.VUE_APP_API_ROOT + "/deleteTool", { id })
               .then(response => {
                 if (response) {
                   // sets tools in Vuex store and routes to home

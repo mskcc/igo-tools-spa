@@ -49,7 +49,7 @@ const _ = require("lodash");
 Vue.config.productionTip = false;
 
 const routes = [
-    { path: "/", component: HomePage, name: "home" }
+    { path: "*", component: HomePage, name: "home" }
     // { path: "/create", component: CreateToolPage, name: "create" }
 ];
 
