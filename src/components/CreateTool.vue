@@ -115,7 +115,7 @@ export default {
                 //   description: ""
                 // });
                 app.axios
-                    .post('http://localhost:5000/addTool', { ...tool })
+                    .post(process.env.VUE_APP_API_ROOT+'/addTool', { ...tool })
                     .then(() => {
                         // set tools in Vuex store and route to home
 
@@ -130,7 +130,7 @@ export default {
                 // edits tool
             } else {
                 app.axios
-                    .post('http://localhost:5000/editTool', { ...tool })
+                    .post(process.env.VUE_APP_API_ROOT+'/editTool', { ...tool })
                     .then(() => {
                         this.$store.commit('setToEdit', false);
                         this.$store.commit('showDialog', false);
