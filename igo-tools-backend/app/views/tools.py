@@ -19,7 +19,7 @@ tools = Blueprint("tools", __name__)
 MONGO_DATABASE_URI = app.config["MONGO_DATABASE_URI"]
 client = MongoClient(MONGO_DATABASE_URI)
 
-db = client.toolsDB
+db = client.tools
 
 
 @tools.route("/getTools", methods=["GET", "POST"])
