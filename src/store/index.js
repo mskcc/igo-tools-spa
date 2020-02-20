@@ -2,7 +2,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import * as app from "./../app.js";
-import { _ } from "core-js";
 
 Vue.use(Vuex);
 
@@ -29,7 +28,7 @@ export default new Vuex.Store({
     },
     actions: {
         setTools(context) {
-            app.axios.get("http://localhost:5000/getTools").then(response => {
+            app.axios.get(process.env.API_ROOT + "/getTools").then(response => {
                 context.commit("setTools", response.data);
                 // console.log(response);
                 // console.log(response.data);
