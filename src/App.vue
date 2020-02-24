@@ -1,19 +1,19 @@
 <template>
-  <div id='app'>
-    <h1>IGO Tools</h1>
-    <img alt='IGO logo' src='./assets/splash_logo_dark.png' />
-    <p>A complete list of tools used internally by IGO</p>
-    <nav>
-      <ul>
-        <li class='topnavli' v-for='link in links' :key='link'>
-          <router-link exact :to='{ name: link }'>{{ link }}</router-link>
-        </li>
-      </ul>
-    </nav>
+  <div id='app' v-cloak>
+    <div class='header'>
+      <img class='logo' alt='IGO logo' src='./assets/IGOlogo512.png' />
+      <span>IGO Tools</span>
+    </div>
+    <!--  <nav>
+            <ul>
+                <li class="topnavli" v-for="link in links" :key="link">
+                    <router-link exact :to="{ name: link }">{{ link }}</router-link>
+                </li>
+            </ul>
+    </nav>-->
     <router-view></router-view>
   </div>
 </template>
-
 <script>
 // import * as app from './app.js';
 
@@ -21,7 +21,7 @@ export default {
   name: 'app',
   data: function() {
     return {
-      links: ['home', 'create']
+      // links: ["home"]
     };
   },
   mounted() {
@@ -29,7 +29,21 @@ export default {
   }
 };
 </script>
-
 <style>
 @import './assets/css/igo-tools.css';
+
+.header {
+  color: white;
+  width: 100vw;
+  text-align: left;
+  padding: 1em;
+  top: 0;
+  background-color: #007cba;
+}
+
+.header img.logo {
+  height: 3em;
+  width: auto;
+  margin-right: 1em;
+}
 </style>

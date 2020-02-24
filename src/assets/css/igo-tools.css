@@ -2,25 +2,29 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    /*text-align: center;*/
     color: #2c3e50;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
   }
 
-table, th, td {
+  [v-cloak] {
+    display: none
+}
+
+/*table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
-
-th, td {
+*/
+/*th, td {
     text-align: left;
 }
-
-img {
+*/
+/*img {
     width: 10%;
     height: auto;
 }
-
+*/
 .tool-name {
     font-weight: bold;
 }
@@ -28,13 +32,6 @@ img {
 .tool-link {
     font-size: 12px;
 }
-
-.topnavli {
-    display: inline;
-    padding: 5px;
-    text-transform: capitalize;
-}
-
 
 
 
