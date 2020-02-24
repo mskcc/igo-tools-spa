@@ -22,7 +22,7 @@ import {
     MdDialog,
     MdCheckbox,
     MdField,
-    // MdInput
+    MdRipple
 } from "vue-material/dist/components";
 
 Vue.use(MdButton);
@@ -34,7 +34,7 @@ Vue.use(MdTooltip);
 Vue.use(MdDialog);
 Vue.use(MdCheckbox);
 Vue.use(MdField);
-// Vue.use(MdInput);
+Vue.use(MdRipple);
 
 
 // Vue.use(MdApp);
